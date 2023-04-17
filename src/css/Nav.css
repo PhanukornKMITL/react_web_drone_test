@@ -1,0 +1,10 @@
+.navigation .top-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation .info-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

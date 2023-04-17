@@ -1,0 +1,38 @@
+.login-page .bg-img {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.login-page .logo-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-page .form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page .MuiOutlinedInput-root fieldset {
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+
+.login-page .option {
+    display: flex;
+}
+
+.login-page .MuiButton-root {
+    border-radius: 20px;
+}
