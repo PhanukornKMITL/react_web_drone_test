@@ -56,8 +56,7 @@ function CalendarPage() {
     },
   ];
   return (
-    <div>
-      <h1>Test Calander</h1>
+    <div className="wrapper">
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Calendar
@@ -69,26 +68,29 @@ function CalendarPage() {
             components={{
               toolbar: CustomToolbar,
             }}
-            style={{ height: 500, width: "100%", background: "#F7F7F7" }}
+            style={{ height: "100%", width: "100%"}}
             onSelectEvent={handleSelectEvent}
           />
         </Grid>
         <Grid item xs={12} md={4}>
-          <Box sx={{ height: 500, backgroundColor: "#2196f3", color: "#fff" }} className="date-info">
-            {selectedEvent ? (
-              <>
-                <Typography variant="h6">{selectedEvent.title}</Typography>
-                <Typography>{selectedEvent.desc}</Typography>
-                <Typography>{selectedEvent.start.toString()}</Typography>
-                <Typography>{selectedEvent.extendedProps.info}</Typography> {/* แสดงข้อมูล info */}
-              </>
-            ) : (
-              <Typography variant="h6">Please select an event</Typography>
-            )}
+          <Box sx={{ height: '100%' }}>
+            <div className="date-info">
+              {selectedEvent ? (
+                <>
+                  <Typography variant="h6">{selectedEvent.title}</Typography>
+                  <Typography>{selectedEvent.desc}</Typography>
+                  <Typography>{selectedEvent.start.toString()}</Typography>
+                  <Typography>{selectedEvent.extendedProps.info}</Typography> {/* แสดงข้อมูล info */}
+                </>
+              ) : (
+                <Typography variant="h6">Please select an event</Typography>
+              )}
+            </div>
           </Box>
         </Grid>
       </Grid>
     </div>
   );
+  
 }
 export default CalendarPage;

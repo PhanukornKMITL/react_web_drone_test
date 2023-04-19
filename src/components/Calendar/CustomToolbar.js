@@ -1,4 +1,3 @@
-import Toolbar from "react-big-calendar/lib/Toolbar";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "../../css/Calendar.css";
 import moment from "moment";

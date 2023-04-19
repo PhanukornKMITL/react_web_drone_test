@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Typography } from "@material-ui/core";
 import Nav from "./Nav";
-import DroneCard from "./DroneCard";
 import "../css/HomePage.css";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import DroneStatus from "./Drone-status";
 import CalendarPage from "./Calendar";
+import Profile from "./Profile";
 
 function Drone() {
   const [pageIndex, setPageIndex] = useState(0);
+  console.log('Page ',pageIndex);
   const handleMenuClick = (index) => {
     setPageIndex(index);
   };
@@ -22,9 +18,10 @@ function Drone() {
         <Nav onPageChange={handleMenuClick} />
       </div>
       <div className="mid">
-        {/* {pageIndex === 0 && <DroneStatus />} */}
-        {pageIndex === 1 && <DroneStatus />}
-        {pageIndex === 2 && <CalendarPage />}
+        {pageIndex === 0 && <Profile />}
+        {/*pageIndex === 1 && <Map />  */}
+        {pageIndex === 2 && <DroneStatus />}
+        {pageIndex === 3 && <CalendarPage />}
       </div>
     </div>
   );

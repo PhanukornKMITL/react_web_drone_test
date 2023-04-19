@@ -7,11 +7,23 @@ import {
 } from "@material-ui/core";
 import "../css/Nav.css";
 import { Button } from "@mui/material";
+import React, { useState } from "react";
 
 function Nav(props) {
-  console.log("test", props);
+  const [activeButton, setActiveButton] = useState(1);
+  const buttons = [
+    { id: 1, label: "ภาพถ่ายทางอากาศ" },
+    { id: 2, label: "สถานะอากาศยาน" },
+    { id: 3, label: "ปฏิทิน" },
+  ];
+
   const handleMenuClick = (index) => {
+    handleButtonClick(index);
     props.onPageChange(index);
+  };
+
+  const handleButtonClick = (buttonId) => {
+    setActiveButton(buttonId);
   };
 
   return (
@@ -20,16 +32,26 @@ function Nav(props) {
         <AppBar
           component="nav"
           position="relative"
-          style={{ backgroundColor: "#262626" }}
+          style={{ backgroundColor: "#262626", height: '30px' }}
         >
-          <Toolbar sx={{ display: "flex" }}>
+          <Toolbar
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              minHeight: "inherit",
+              height: 'inherit'
+            }}
+          >
             <IconButton
               color="inherit"
               aria-label="open drawer"
               edge="start"
               sx={{ mr: 2, display: { sm: "none" } }}
             ></IconButton>
-            <Typography>Monday - Friday: 8.00 am to 5.00 pm</Typography>
+            <Typography sx={{ flex: 1 }}>
+              Monday - Friday: 8.00 am to 5.00 pm
+            </Typography>
             <div className="info-section" style={{ marginLeft: "auto" }}>
               <div className="tel-info" style={{ margin: "10px" }}>
                 <Typography>888</Typography>
@@ -37,7 +59,6 @@ function Nav(props) {
               <div className="mail-info" style={{ margin: "10px" }}>
                 <Typography>mail.com</Typography>
               </div>
-
               <Typography className="username" style={{ margin: "10px" }}>
                 Suda.K
               </Typography>
@@ -45,15 +66,10 @@ function Nav(props) {
             </div>
           </Toolbar>
         </AppBar>
-
-        <div
-          style={{ background: "#cdf475", width: "100%", height: "10px" }}
-        ></div>
-
         <AppBar
           component="nav"
           position="relative"
-          style={{ backgroundColor: "#ffffff" }}
+          style={{ backgroundColor: "#ffffff"}}
         >
           <Toolbar sx={{ display: "flex" }}>
             <IconButton
@@ -62,27 +78,27 @@ function Nav(props) {
               edge="start"
               sx={{ mr: 2, display: { sm: "none" } }}
             ></IconButton>
-            <Typography sx={{ color: "#636363" }}>
-              Monday - Friday: 8.00 am to 5.00 pm
-            </Typography>
-            <div className="info-section" style={{ marginLeft: "auto", color: "#636363" }}>
-              <div className="tel-info" style={{ margin: "10px", color: "#636363" }}>
-                <Button>ภาพถ่ายทางอากาศ</Button>
-              </div>
-              <div className="mail-info" style={{ margin: "10px", color: "#636363" }}>
-                <Button
-                  sx={{ color: "#636363" }}
-                  onClick={() => handleMenuClick(1)}
+            <Typography>Test</Typography>
+            <div
+              className="info-section"
+              style={{ marginLeft: "auto", color: "#636363" }}
+            >
+              {buttons.map((button) => (
+                <div
+                  key={button.id}
+                  className="info-item"
+                  style={{ margin: "10px" }}
                 >
-                  สถานะอากาศยาน
-                </Button>
-              </div>
-              <Button
-                sx={{ color: "#636363" }}
-                onClick={() => handleMenuClick(2)}
-              >
-                ปฏิทิน
-              </Button>
+                  <Button
+                    key={button.id}
+                    className={activeButton === button.id ? "active" : ""}
+                    sx={{ color: "#636363" }}
+                    onClick={() => handleMenuClick(button.id)}
+                  >
+                    {button.label}
+                  </Button>
+                </div>
+              ))}
               <Avatar alt="Remy Sharp" src="" />
             </div>
           </Toolbar>

@@ -14,6 +14,7 @@ function DroneCard({cardData}) {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        borderRadius: '10px'
       }}
     >
       <CardMedia
